@@ -1,0 +1,20 @@
+<vorlesung>
+    <name>ITProjektmanagement</name>
+    <bereich>WirtschaftsInformatik</bereich>
+    <dozenten>
+        <dozent>Pawlowski</dozent>
+        <dozent>Jansen</dozent>
+        <fachbereiche>
+            <fachbereich>1</fachbereich>
+            <fachbereich>2</fachbereich>
+            <fachbereich>3</fachbereich>
+            <fachbereich>4</fachbereich>
+            <studiengänge>
+                <studiengang>MTI</studiengang>
+                <studiengang>AI</studiengang>
+                <studiengang>WI</studiengang>
+            </studiengänge>
+        </fachbereiche>
+    </dozenten>
+    <semester>Wintersemester</semester>
+</vorlesung>

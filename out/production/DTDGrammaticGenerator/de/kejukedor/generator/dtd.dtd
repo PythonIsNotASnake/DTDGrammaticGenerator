@@ -1,0 +1,10 @@
+<!ELEMENT dozenten (dozent*, fachbereiche??)>
+<!ELEMENT fachbereiche (fachbereich*, studiengänge??)>
+<!ELEMENT studiengänge (studiengang*)>
+<!ELEMENT vorlesung (name, bereich, dozenten, semester)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT bereich (#PCDATA)>
+<!ELEMENT dozent (#PCDATA)>
+<!ELEMENT fachbereich (#PCDATA)>
+<!ELEMENT studiengang (#PCDATA)>
+<!ELEMENT semester (#PCDATA)>
