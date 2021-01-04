@@ -56,6 +56,7 @@ public class GeneratorAlgo {
                             break;
                         } else if (parent.getChildren().get(childInParent).contains(childNodes.item(childInNode).getNodeName())) {
                             parent.getChildren().set(childInParent, childNodes.item(childInNode).getNodeName() + "\u002A");
+                            break;
                         } else if ((childInParent + 1) == parent.getChildren().size()) {
                             parent.getChildren().add(childNodes.item(childInNode).getNodeName());
                             break;
