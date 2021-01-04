@@ -1,4 +1,4 @@
-package de.kejukedor.generator.nodes;
+package de.generator.nodes;
 
 public class Child {
     private String tag;

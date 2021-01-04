@@ -1,6 +1,6 @@
-package de.kejukedor.generator.fileAccess;
+package de.generator.fileAccess;
 
-import de.kejukedor.generator.DTD;
+import de.generator.DTD;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class XMLWriter {
 
     public void createFile(DTD dtd) {
         try {
-            FileWriter myWriter = new FileWriter("src/de/kejukedor/generator/dtd.dtd");
+            FileWriter myWriter = new FileWriter("src/de/generator/dtd.dtd");
             myWriter.write(dtd.toString());
             myWriter.close();
             System.out.println("Successfully wrote to the file.");

@@ -1,6 +1,5 @@
-package de.kejukedor.generator.nodes;
+package de.generator.nodes;
 
-import de.kejukedor.generator.nodes.Parent;
 import org.w3c.dom.*;
 
 public class Root extends Parent {

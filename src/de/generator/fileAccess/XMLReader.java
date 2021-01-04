@@ -1,4 +1,4 @@
-package de.kejukedor.generator.fileAccess;
+package de.generator.fileAccess;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -30,7 +30,7 @@ public class XMLReader {
 
     private String choosePath() {
         String dataPath = null;
-        JFileChooser chooser = new JFileChooser("src/de/kejukedor/generator");
+        JFileChooser chooser = new JFileChooser("src/de/generator");
         int rueckgabeWert = chooser.showOpenDialog(null);
         if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
             dataPath = chooser.getSelectedFile().getAbsolutePath();

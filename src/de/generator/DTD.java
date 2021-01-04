@@ -1,8 +1,8 @@
-package de.kejukedor.generator;
+package de.generator;
 
-import de.kejukedor.generator.nodes.Child;
-import de.kejukedor.generator.nodes.Parent;
-import de.kejukedor.generator.nodes.Root;
+import de.generator.nodes.Child;
+import de.generator.nodes.Parent;
+import de.generator.nodes.Root;
 
 import java.util.ArrayList;
 import java.util.List;

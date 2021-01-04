@@ -1,6 +1,6 @@
-package de.kejukedor.generator;
+package de.generator;
 
-import de.kejukedor.generator.fileAccess.XMLWriter;
+import de.generator.fileAccess.XMLWriter;
 
 public class StartApplication {
 

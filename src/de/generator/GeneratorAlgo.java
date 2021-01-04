@@ -1,9 +1,9 @@
-package de.kejukedor.generator;
+package de.generator;
 
-import de.kejukedor.generator.fileAccess.XMLReader;
-import de.kejukedor.generator.nodes.Child;
-import de.kejukedor.generator.nodes.Parent;
-import de.kejukedor.generator.nodes.Root;
+import de.generator.nodes.Root;
+import de.generator.fileAccess.XMLReader;
+import de.generator.nodes.Child;
+import de.generator.nodes.Parent;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

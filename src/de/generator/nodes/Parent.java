@@ -1,4 +1,4 @@
-package de.kejukedor.generator.nodes;
+package de.generator.nodes;
 
 import java.util.ArrayList;
 import java.util.List;
