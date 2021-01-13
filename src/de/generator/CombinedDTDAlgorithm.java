@@ -1,99 +1,22 @@
 package de.generator;
 
-import de.generator.nodes.Root;
-import de.generator.fileAccess.XMLReader;
 import de.generator.nodes.Child;
 import de.generator.nodes.Parent;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneratorAlgo {
+public class CombinedDTDAlgorithm {
 
-    private Document xmlA;
-    private Document xmlB;
-    private DTD dtdA;
-    private DTD dtdB;
+    public CombinedDTDAlgorithm() {
 
-    public GeneratorAlgo() {
-        XMLReader reader = new XMLReader();
-        xmlA = reader.read();
-        xmlB = reader.read();
-        dtdA = new DTD(new Root(xmlA.getDocumentElement().getNodeName(), xmlA.getDocumentElement()));
-        dtdB = new DTD(new Root(xmlB.getDocumentElement().getNodeName(), xmlB.getDocumentElement()));
     }
 
-    public void searchInXML(Document xml, DTD dtd) {
-        this.searchInParent(xml.getDocumentElement().cloneNode(true), dtd);
+    public DTD startAlgorithm(DTD firstDTD, DTD secondDTD) {
+        return compareDTDs(firstDTD, secondDTD);
     }
 
-    public void searchInParent(Node node, DTD dtd) {
-        // check if parent is already in dtd
-        for (int parent = 0; parent < dtd.getParents().size(); parent++) {
-            if (node.getNodeName() == dtd.getParents().get(parent).getTag()) {
-                return;
-            }
-        }
-        this.addParentToDTD(node, dtd);
-    }
-
-    public void addParentToDTD(Node node, DTD dtd) {
-        NodeList childNodes = node.getChildNodes();
-        Parent parent = new Parent(node.getNodeName());
-
-        // create parent-element for DTD
-        for (int childInNode = 0; childInNode < childNodes.getLength(); childInNode++) {
-            if (childNodes.item(childInNode).getNodeName() != "#text") {
-                if (parent.getChildren().size() < 1) {
-                    parent.getChildren().add(childNodes.item(childInNode).getNodeName());
-                } else {
-                    for (int childInParent = 0; childInParent < parent.getChildren().size(); childInParent++) {
-                        if (parent.getChildren().get(childInParent) == childNodes.item(childInNode).getNodeName()) {
-                            parent.getChildren().set(childInParent, childNodes.item(childInNode).getNodeName() + "\u002B");
-                            break;
-                        } else if (parent.getChildren().get(childInParent).contains(childNodes.item(childInNode).getNodeName())) {
-                            parent.getChildren().set(childInParent, childNodes.item(childInNode).getNodeName() + "\u002A");
-                            break;
-                        } else if ((childInParent + 1) == parent.getChildren().size()) {
-                            parent.getChildren().add(childNodes.item(childInNode).getNodeName());
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        dtd.getParents().add(parent);
-
-        for (int childInNode = 0; childInNode < childNodes.getLength(); childInNode++) {
-            if (childNodes.item(childInNode).getNodeName() != "#text") {
-                NodeList tmpList = childNodes.item(childInNode).getChildNodes();
-                // If greater than 1 then it is a parent
-                if (tmpList.getLength() > 1) {
-                    this.searchInParent(childNodes.item(childInNode), dtd);
-                }
-                // else it is a child
-                else {
-                    this.addChildToDTD(childNodes.item(childInNode), dtd);
-                }
-            }
-        }
-    }
-
-    private void addChildToDTD(Node node, DTD dtd) {
-        // Check if child exists in DTD
-        for (int child = 0; child < dtd.getChildren().size(); child++) {
-            if (node.getNodeName() == dtd.getChildren().get(child).getTag()) {
-                return;
-            }
-        }
-        Child child = new Child(node.getNodeName());
-        dtd.getChildren().add(child);
-    }
-
-    public DTD compareDTDs(DTD firstDTD, DTD secondDTD) {
+    private DTD compareDTDs(DTD firstDTD, DTD secondDTD) {
         // compare roots
         if (!this.compareRoots(firstDTD, secondDTD)) {
             return null;
@@ -203,8 +126,6 @@ public class GeneratorAlgo {
                 }
             }
         }
-
-
         return combinedDTD;
     }
 
@@ -342,21 +263,5 @@ public class GeneratorAlgo {
         }
 
         return children;
-    }
-
-    public Document getXmlA() {
-        return xmlA;
-    }
-
-    public Document getXmlB() {
-        return xmlB;
-    }
-
-    public DTD getDtdA() {
-        return dtdA;
-    }
-
-    public DTD getDtdB() {
-        return dtdB;
     }
 }

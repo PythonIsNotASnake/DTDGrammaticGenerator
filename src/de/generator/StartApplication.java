@@ -5,10 +5,12 @@ import de.generator.fileAccess.XMLWriter;
 public class StartApplication {
 
     public static void main(String[] args) {
-        GeneratorAlgo algo = new GeneratorAlgo();
-        algo.searchInXML(algo.getXmlA(), algo.getDtdA());
-        algo.searchInXML(algo.getXmlB(), algo.getDtdB());
+        XMLToDTDAlgorithm xmlToDTDAlgorithm = new XMLToDTDAlgorithm();
+        DTD dtdA = xmlToDTDAlgorithm.startAlgorithm();
+        DTD dtdB = xmlToDTDAlgorithm.startAlgorithm();
+
+        CombinedDTDAlgorithm combinedDTDAlgorithm = new CombinedDTDAlgorithm();
         XMLWriter writer = new XMLWriter();
-        writer.createFile(algo.compareDTDs(algo.getDtdA(), algo.getDtdB()));
+        writer.createFile(combinedDTDAlgorithm.startAlgorithm(dtdA, dtdB));
     }
 }
