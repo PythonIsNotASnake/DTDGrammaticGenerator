@@ -26,8 +26,16 @@ public class DTD {
         return parents;
     }
 
+    public void setParents(List<Parent> parents) {
+        this.parents = parents;
+    }
+
     public List<Child> getChildren() {
         return children;
+    }
+
+    public void setChildren(List<Child> children) {
+        this.children = children;
     }
 
     @Override
